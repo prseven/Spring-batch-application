@@ -18,7 +18,6 @@ import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
-import org.springframework.mail.javamail.JavaMailSender;
 
 @Configuration
 @EnableBatchProcessing
@@ -67,7 +66,7 @@ public class SpringBatchConfig {
 
         lineTokenizer.setDelimiter(",");
         lineTokenizer.setStrict(false);
-        lineTokenizer.setNames("id", "name", "dept", "salary", "email");
+        lineTokenizer.setNames(new String[]{"id", "name", "mail_id", "notification_sent", "process", "status"});
 
         BeanWrapperFieldSetMapper<User> fieldSetMapper = new BeanWrapperFieldSetMapper<>();
         fieldSetMapper.setTargetType(User.class);
@@ -77,7 +76,4 @@ public class SpringBatchConfig {
 
         return defaultLineMapper;
     }
-
-
-
 }

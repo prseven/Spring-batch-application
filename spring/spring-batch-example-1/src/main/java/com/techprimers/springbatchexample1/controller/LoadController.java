@@ -1,13 +1,11 @@
 package com.techprimers.springbatchexample1.controller;
 
-import com.techprimers.springbatchexample1.model.User;
 import com.techprimers.springbatchexample1.util.MailUtil;
 import org.springframework.batch.core.*;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.repository.JobExecutionAlreadyRunningException;
 import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
 import org.springframework.batch.core.repository.JobRestartException;
-import org.springframework.batch.item.ItemProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +19,7 @@ import java.util.Map;
 public class LoadController {
 
     @Autowired
-    private MailUtil util;
+    private MailUtil mail;
 
     @Autowired
     JobLauncher jobLauncher;
@@ -39,16 +37,27 @@ public class LoadController {
         JobExecution jobExecution = jobLauncher.run(job, parameters);
 
         System.out.println("JobExecution: " + jobExecution.getStatus());
+        System.out.println(jobExecution.isRunning());
 
-        System.out.println("Batch is Running...");
+        BatchStatus status = jobExecution.getStatus();
+        System.out.println(status);
+        String req = "COMPLETED";
 
+        System.out.println(req.equals(status.toString()));
 
-
-
-        while (jobExecution.isRunning()) {
-            System.out.println("Job execution running...");
+        if (req.equals(status.toString())){
+            mail.sendEmail(
+                    "thechampishere482244@gmail.com",
+                    "Process has been completed",
+                    "Process Successfull"
+            );
+        } else {
+                mail.sendEmail(
+                        "thechampishere482244@gmail.com",
+                        "Process has been failed",
+                        "Process Failed"
+                );
         }
-
         return jobExecution.getStatus();
     }
 }

@@ -1,54 +1,24 @@
 package com.techprimers.springbatchexample1.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.util.Date;
+import org.springframework.data.annotation.Id;
 
-@Entity
 public class User {
 
     @Id
     private Integer id;
     private String name;
-    private String dept;
+    private String mail_id;
+    private String notification_sent;
+    private String process;
+    private String status;
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", dept='" + dept + '\'' +
-                ", salary=" + salary +
-                ", time=" + time +
-                ", email='" + email + '\'' +
-                '}';
-    }
-
-    private Integer salary;
-    private Date time;
-    private String email;
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public User(String email) {
-        this.email = email;
-    }
-
-    public User(Integer id, String name, String dept, Integer salary, Date time) {
+    public User(Integer id, String name, String mail_id, String notification_sent, String process, String status) {
         this.id = id;
         this.name = name;
-        this.dept = dept;
-        this.salary = salary;
-        this.time = time;
-    }
-
-    public User() {
+        this.mail_id = mail_id;
+        this.notification_sent = notification_sent;
+        this.process = process;
+        this.status = status;
     }
 
     public Integer getId() {
@@ -67,27 +37,47 @@ public class User {
         this.name = name;
     }
 
-    public String getDept() {
-        return dept;
+    public String getMail_id() {
+        return mail_id;
     }
 
-    public void setDept(String dept) {
-        this.dept = dept;
+    public void setMail_id(String mail_id) {
+        this.mail_id = mail_id;
     }
 
-    public Integer getSalary() {
-        return salary;
+    public String getNotification_sent() {
+        return notification_sent;
     }
 
-    public void setSalary(Integer salary) {
-        this.salary = salary;
+    public void setNotification_sent(String notification_sent) {
+        this.notification_sent = notification_sent;
     }
 
-    public Date getTime() {
-        return time;
+    public String getProcess() {
+        return process;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setProcess(String process) {
+        this.process = process;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", mail_id='" + mail_id + '\'' +
+                ", notification_sent='" + notification_sent + '\'' +
+                ", process='" + process + '\'' +
+                ", status='" + status + '\'' +
+                '}';
     }
 }

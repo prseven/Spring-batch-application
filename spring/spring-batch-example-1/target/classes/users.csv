@@ -1,6 +1,6 @@
-id,name,dept,salary,email
-1,Peter,001,12000,peter@gmail.com
-2,Sam,002,13000,sam@gmail.com
-3,Ryan,003,10000,ryan@gmail.com
-4,Tex,001,20000,thechampishere482244@gmail.com
-5,Luna,001,40000,1dt17is059@gmail.com
+id,name,mail_id,notification_sent,process,status
+1,praveen,1dt17is059@gmail.com,no,failure,open
+2,alice,thechampishere482244@gmail.com,yes,success,completed
+3,bob,1dt17is059@gmail.com,no,failure,progress
+4,charlie,1dt17is059@gmail.com,yes,success,completed
+5,dynamo,1dt17is059@gmail.com,no,success,progress
